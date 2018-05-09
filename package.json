@@ -1,0 +1,31 @@
+{
+  "name": "angular-extended-weekend-challenge",
+  "version": "1.0.0",
+  "description": "> NOTE: Do not fork this repository. Instead, create your own repository from scratch.",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dylandorsey/Angular-extended-weekend-challenge.git"
+  },
+  "author": "dylan dorsey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dylandorsey/Angular-extended-weekend-challenge/issues"
+  },
+  "homepage": "https://github.com/dylandorsey/Angular-extended-weekend-challenge#readme",
+  "dependencies": {
+    "angular": "^1.6.10",
+    "angular-animate": "^1.6.10",
+    "angular-aria": "^1.6.10",
+    "angular-material": "^1.1.9",
+    "angular-messages": "^1.6.10",
+    "angular-route": "^1.6.10",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "pg": "^7.4.3"
+  }
+}
