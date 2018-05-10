@@ -2,5 +2,5 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
     console.log ('ProjectController is loaded');
     const self = this;
     self.projects = ProjectService.projects;
-    // self.newProject = ProjectService.newProject;
+    self.newProject = ProjectService.newProject;
 }]);

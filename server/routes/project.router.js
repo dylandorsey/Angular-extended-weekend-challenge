@@ -6,8 +6,19 @@ const pool = require('../modules/pool');
 // Routes
 
 // POST route
-
-// end POST route
+router.post('/', (req,res) => {
+    console.log('initiate POST query');
+    const newProject = req.body;
+    const queryText = `INSERT INTO "project" ("name")
+    VALUES ($1);`;
+    pool.query(queryText, [newProject.name])
+    .then((result) => {
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log('Error making query', error);
+        res.sendStatus(500);
+    });
+}); // end POST route
 
 
 // GET route
