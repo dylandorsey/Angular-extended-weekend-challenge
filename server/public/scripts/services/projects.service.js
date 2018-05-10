@@ -22,7 +22,6 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
             })
     }// end GET project
 
-
     // POST project
     self.newProject = function (newProject) {
         console.log(newProject);
@@ -40,8 +39,23 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
             .catch(function (error) {
                 console.log('error on /Project POST', error);
             });
-    }
-    // end POST project
+    }// end POST project
+
+    // DELETE project
+    self.deleteProject = function (project) {
+        console.log('init deleteProject function');
+        $http({
+            method: 'DELETE',
+            url: `/project/${project.id}`
+        })
+        .then (function (response) {
+            console.log(response);
+            self.getProjects();
+        })
+        .catch (function (error) {
+            console.log('error on /project DELETE', error);
+        })
+    }// end DELETE project
 
     // display projects on page load
     self.getProjects();

@@ -3,4 +3,5 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
     const self = this;
     self.projects = ProjectService.projects;
     self.newProject = ProjectService.newProject;
+    self.deleteProject = ProjectService.deleteProject;
 }]);

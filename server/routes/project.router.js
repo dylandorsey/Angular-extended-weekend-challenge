@@ -40,7 +40,19 @@ router.get('/', (req,res) => {
 // end GET route
 
 // DELETE route
-
+router.delete('/:id', (req, res) => {
+    const entry_id = req.params.id;
+    console.log(entry_id);
+    pool.query(`DELETE FROM "project"
+                        WHERE "id" = ($1);`, [entry_id])
+        .then((results) => {
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log('problem with DELETE from database', error);
+            res.sendStatus(500);
+        });
+});
 // end DELETE route
 
 module.exports = router;
