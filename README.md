@@ -2,18 +2,17 @@
 ```SQL
 CREATE TABLE "entry" (
 "id" SERIAL PRIMARY KEY,
+"line_item" VARCHAR (80) NOT NULL,
 "description" VARCHAR (200) NOT NULL,
 "project" VARCHAR (100) NOT NULL,
 "date" DATE NOT NULL,
-"start_time" TIME,
-"end_time" TIME,
 "hours" INTEGER
 );
 
 CREATE TABLE "project" (
 "id" SERIAL PRIMARY KEY,
 "name" VARCHAR (100) NOT NULL,
-"total hours"  INT
+"total_hours"  INT
 );
 ```
 
