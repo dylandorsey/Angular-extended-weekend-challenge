@@ -9,7 +9,8 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     // POST new entry
     self.newEntry = function (newEntry) {
         console.log(newEntry);
-        newEntry.hours = (newEntry.endTime - newEntry.startTime) / (1000 * 60 * 60);
+        newEntry.hours = (newEntry.endTime - newEntry.startTime) ;
+        console.log(newEntry.hours);
         $http({
             method: 'POST',
             url: '/entry',
