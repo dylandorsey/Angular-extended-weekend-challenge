@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 // Require routes
 const entryRouter = require('./routes/entry.router');
-// const projectRouter = require('./routes/project.router');
+const projectRouter = require('./routes/project.router');
 
 // PORT
 const PORT = process.env.PORT || 5000;
@@ -16,7 +16,7 @@ app.use(express.static('server/public'));
 
 // Use routes
 app.use('/entry', entryRouter);
-// app.use('/projects', projectRouter);
+app.use('/project', projectRouter);
 
 // Set app to listen
 app.listen(PORT, () => {
