@@ -26,9 +26,9 @@ pool.on('error', (error) => {
 router.post('/', (req,res) => {
     console.log('initiate post query');
     const newEntry = req.body;
-    const queryText = `INSERT INTO "entry" ("description", "project", "date", "start_time", "end_time", "hours")
-    VALUES ($1, $2, $3, $4, $5, $6);`;
-    pool.query(queryText, [newEntry.description, newEntry.project, newEntry.date, newEntry.start_time, newEntry.end_time, newEntry.hours])
+    const queryText = `INSERT INTO "entry" ("line_item", "description", "project", "date", "hours")
+    VALUES ($1, $2, $3, $4, $5);`;
+    pool.query(queryText, [newEntry.lineItem, newEntry.description, newEntry.project, newEntry.date, newEntry.hours])
     .then((result) => {
         res.sendStatus(201);
     }).catch((error) => {
