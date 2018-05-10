@@ -28,7 +28,7 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
             });
     }// end POST new entry
 
-    // GET new entry
+    // GET entries
     self.getEntries = function () {
         console.log('init getEntries function')
         $http ({

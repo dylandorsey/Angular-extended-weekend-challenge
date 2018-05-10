@@ -1,1 +1,27 @@
-{{vm.message}} {{vm.MCV}}
+<Div>
+        <h2>Projects</h2>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Project</td>
+                        <td>Total Hours</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="project in vm.projects.projectsArray">
+                        <td>
+                            <input ng-model="project.name">
+                        </td>
+                        <td>
+                            <input ng-model="project.total_hours">
+                        </td>
+                        <td>
+                            <button>Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </Div>
