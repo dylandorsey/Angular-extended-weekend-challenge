@@ -1,0 +1,12 @@
+{{vm.message}}
+{{vm.MCV}}
+<Div>
+    <h2>Add entry</h2>
+    <input ng-model="vm.new.lineItem" placeholder="New Line Item">
+    <input ng-model="vm.new.description" placeholder="What did you do?">
+    <input ng-model="vm.new.project" placeholder="Which project">
+    <input ng-model="vm.new.date" type="date">
+    <input ng-model="vm.new.startTime" type="time">
+    <input ng-model="vm.new.endTime" type="time">
+    <button ng-click="vm.newEntry(vm.new)">Submit</button>
+</Div>

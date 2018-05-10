@@ -1,3 +1,24 @@
+### SQL DATABASE SETUP
+```SQL
+CREATE TABLE "entry" (
+"id" SERIAL PRIMARY KEY,
+"description" VARCHAR (200) NOT NULL,
+"project" VARCHAR (100) NOT NULL,
+"date" DATE NOT NULL,
+"start_time" TIME,
+"end_time" TIME,
+"hours" INTEGER
+);
+
+CREATE TABLE "project" (
+"id" SERIAL PRIMARY KEY,
+"name" VARCHAR (100) NOT NULL,
+"total hours"  INT
+);
+```
+
+
+
 # Time Tracker Project
 
 > NOTE: Do not fork this repository. Instead, create your own repository from scratch.
@@ -37,3 +58,4 @@ Start with two tables **projects** & **entries**. When base features are complet
 ### Wireframes
 
 ![Add Entry Page](page-three.png)
+
