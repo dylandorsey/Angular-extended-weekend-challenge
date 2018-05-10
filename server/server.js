@@ -4,8 +4,8 @@ const app = express();
 const bodyParser = require('body-parser');
 
 // Require routes
-// const taskRouter = require('./routes/tasks.router');
-// const projectRouter = require('./routes/projects.router');
+const entryRouter = require('./routes/entry.router');
+// const projectRouter = require('./routes/project.router');
 
 // PORT
 const PORT = process.env.PORT || 5000;
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
 // Use routes
-// app.use('/tasks', taskRouter);
+app.use('/entry', entryRouter);
 // app.use('/projects', projectRouter);
 
 // Set app to listen
