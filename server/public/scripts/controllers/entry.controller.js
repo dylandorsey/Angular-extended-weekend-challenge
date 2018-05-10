@@ -5,4 +5,5 @@ TimeTrackerApp.controller('EntryController', ['EntryService', function (EntrySer
     self.MCV = EntryService.message;
     self.entries = EntryService.entries;
     self.newEntry = EntryService.newEntry;
+    self.deleteEntry = EntryService.deleteEntry;
 }]);

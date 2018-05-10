@@ -44,6 +44,23 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
         })
     }// end GET new entry
 
+    // DELETE entry
+    self.deleteEntry = function (entry) {
+        console.log('init deleteEntry function');
+        $http({
+            method: 'DELETE',
+            url: `/entry/${entry.id}`
+        })
+        .then (function (response) {
+            console.log(response);
+            self.getEntries();
+        })
+        .catch (function (error) {
+            console.log('error on /entry DELETE', error);
+        })
+    }
+    // end DELETE entry
+
     // display entries on page load
     self.getEntries();
 
