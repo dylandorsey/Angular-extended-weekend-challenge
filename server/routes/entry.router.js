@@ -24,7 +24,7 @@ pool.on('error', (error) => {
 
 // POST route
 router.post('/', (req,res) => {
-    console.log('initiate post query');
+    console.log('initiate POST query');
     const newEntry = req.body;
     const queryText = `INSERT INTO "entry" ("line_item", "description", "project", "date", "hours")
     VALUES ($1, $2, $3, $4, $5);`;
@@ -39,7 +39,17 @@ router.post('/', (req,res) => {
 
 
 // GET route
-
+router.get('/', (req,res) => {
+    console.log('initiate GET query');
+    const queryText = `SELECT "id", "line_item", "description", "project", "date", "hours" FROM "entry";`;
+    pool.query(queryText)
+    .then((result) => {
+        res.send(result.rows);
+    }).catch((error) => {
+        console.log('Error making query', error);
+        res.sendStatus(500);
+    });
+});
 // end GET route
 
 // PUT route
