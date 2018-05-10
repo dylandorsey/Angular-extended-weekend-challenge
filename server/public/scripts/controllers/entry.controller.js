@@ -3,5 +3,6 @@ TimeTrackerApp.controller('EntryController', ['EntryService', function (EntrySer
     const self = this;
     self.message = "VC binding";
     self.MCV = EntryService.message;
+    self.entries = EntryService.entries;
     self.newEntry = EntryService.newEntry;
 }]);

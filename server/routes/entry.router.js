@@ -41,7 +41,7 @@ router.post('/', (req,res) => {
 // GET route
 router.get('/', (req,res) => {
     console.log('initiate GET query');
-    const queryText = `SELECT * FROM "entry";`;
+    const queryText = `SELECT "id", "line_item", "description", "project", "date", "hours" FROM "entry";`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows);
