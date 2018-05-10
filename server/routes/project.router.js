@@ -24,7 +24,10 @@ router.post('/', (req,res) => {
 // GET route
 router.get('/', (req,res) => {
     console.log('initiate GET query');
-    const queryText = `SELECT "id", "name", "total_hours" FROM "project";`;
+    const queryText = `SELECT "project"."name", SUM("entry"."hours") AS "total_hours"
+    FROM "project"
+    LEFT JOIN "entry" ON "entry"."project" = "project"."name"
+    GROUP BY "project"."name";`;
     pool.query(queryText)
     .then((result) => {
         res.send(result.rows);

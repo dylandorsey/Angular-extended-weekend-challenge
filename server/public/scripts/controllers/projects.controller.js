@@ -4,4 +4,6 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
     self.projects = ProjectService.projects;
     self.newProject = ProjectService.newProject;
     self.deleteProject = ProjectService.deleteProject;
+    self.getProjects = ProjectService.getProjects;
+    self.getProjects();
 }]);
