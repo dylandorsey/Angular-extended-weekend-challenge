@@ -26,11 +26,11 @@ Trello Board: [https://trello.com/b/WUa7rOxR/time-tracker-sample](https://trello
 
 ## Features
 
-- Add projects by name
-- Track time to projects (task name, date, start time and end time)
-- Display a history of all time entries
-- Delete existing entries
-- Show total hours worked next to each project on the project page
+[x] - Add projects by name
+[x] - Track time to projects (task name, date, start time and end time)
+[x] - Display a history of all time entries
+[x] - Delete existing entries
+[x] - Show total hours worked next to each project on the project page
 
 ### Wireframes
 
