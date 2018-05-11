@@ -1,87 +1,77 @@
-<Div>
-    <h2>Add entry</h2>
-    <div>
-        <table>
-            <thead>
-                <td>New Line Item</td>
-                <td>Description</td>
-                <td>Project</td>
-                <td>Date</td>
-                <td>Start Time</td>
-                <td>End Time</td>
-                <td></td>
-            </thead>
-            <tbody>
-                <td>
-                    <input ng-model="vm.new.lineItem" placeholder="New Line Item">
-                </td>
-                <td>
-                    <input ng-model="vm.new.description" placeholder="What did you do?">
-                </td>
-                <td>
-                    <select ng-model="vm.new.project">
-                        <option value="" disabled>Select project</option>
-                        <option ng-repeat="project in vm.projects.projectsArray" ng-value="project.name">{{project.name}}</option>
-                    </select>
-                </td>
-                <td>
-                    <input ng-model="vm.new.date" type="date">
-                </td>
-                <td>
-                    <input ng-model="vm.new.startTime" type="time">
-                </td>
-                <td>
-                    <input ng-model="vm.new.endTime" type="time">
-                </td>
-                <td>
-                    <button ng-click="vm.newEntry(vm.new)">Submit</button>
-                </td>
-            </tbody>
-        </table>
+<md-content layout-padding ng-cloak>
+    <div md-whiteframe="1">
+        <h2 class="md-headline">Add New entry</h2>
+        <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Line Item</label>
+                <input required md-no-asterisk ng-model="vm.new.lineItem">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Description</label>
+                <input required md-no-asterisk ng-model="vm.new.description">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Project</label>
+                <md-select required md-no-asterisk ng-model="vm.new.project">
+                    <md-option value="" disabled>Select project</md-option>
+                    <md-option ng-repeat="project in vm.projects.projectsArray" ng-value="project.name">{{project.name}}</md-option>
+                </md-select>
+            </md-input-container>
+        </div>
+        <div layout-gt-xs="row">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Start time</label>
+                <input required md-no-asterisk ng-model="vm.new.startTime" type="time">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>End time</label>
+                <input required md-no-asterisk ng-model="vm.new.endTime" type="time">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>Date</label>
+                <md-datepicker required md-no-asterisk ng-model="vm.new.date">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <md-button class="md-raised md-primary" ng-click="vm.newEntry(vm.new)">Submit</md-button>
+            </md-input-container>
+        </div>
     </div>
-</Div>
+    <md-divider></md-divider>
 
-<Div>
-    <h2>History</h2>
-    <div>
-        <label>Search:
-            <input ng-model="searchText" placeholder="search here">
-        </label>
+    <div md-whiteframe="1">
+        <h2 class="md-headline">History</h2>
+        <div ng-hide="vm.entries.entriesArray" class="md-block" flex-gt-xs>
+                <md-input-container>
+                    <label class="md-subhead">Search</label>
+                    <input ng-model="searchText">
+                </md-input-container>
+        </div>
+        <div class="md-block" flex-gt-xs ng-repeat="entry in vm.entries.entriesArray | filter:searchText">
+            <md-divider>
+                <md-input-container>
+                        <label>Line Item</label>
+                    <input ng-model="entry.line_item">
+                </md-input-container>
+                <md-input-container>
+                        <label>Description</label>
+                    <input ng-model="entry.description">
+                </md-input-container>
+                <md-input-container>
+                        <label>Project</label>
+                    <input ng-model="entry.project">
+                </md-input-container>
+                <md-input-container>
+                        <label>Date</label>
+                    <input ng-model="entry.date | date: 'yyyy-MM-dd'">
+                </md-input-container>
+                <md-input-container>
+                        <label>Duration</label>
+                    <input ng-model="entry.hours">
+                </md-input-container>
+                <md-input-container>
+                    <md-button class="md-raised md-warn" ng-click="vm.deleteEntry(entry)">Delete</md-button>
+                </md-input-container>
+                <md-divider>
+        </div>
     </div>
-    <div>
-        <table>
-            <thead>
-                <tr>
-                    <td>Line Item</td>
-                    <td>Description</td>
-                    <td>Project</td>
-                    <td>Date</td>
-                    <td>Hours</td>
-                    <td>Actions</td>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="entry in vm.entries.entriesArray | filter:searchText">
-                    <td>
-                        <input ng-model="entry.line_item">
-                    </td>
-                    <td>
-                        <input ng-model="entry.description">
-                    </td>
-                    <td>
-                        <input ng-model="entry.project">
-                    </td>
-                    <td>
-                        {{entry.date | date: 'yyyy-MM-dd'}}
-                    </td>
-                    <td>
-                        <input ng-model="entry.hours">
-                    </td>
-                    <td>
-                        <button ng-click="vm.deleteEntry(entry)">Delete</button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</Div>
+</md-content>
