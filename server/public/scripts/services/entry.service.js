@@ -9,7 +9,15 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     // POST new entry
     self.newEntry = function (newEntry) {
         console.log(newEntry);
-        newEntry.hours = (newEntry.endTime - newEntry.startTime) / (1000 * 60 * 60);
+        // use time input to determine duration in hours
+        newEntry.hours = (newEntry.endTime - newEntry.startTime)/ (1000 * 60 * 60);
+        // convert duration to quarter hours
+        newEntry.quarterHours = newEntry.hours*4
+        // round duration to the nearest quarter hour
+        newEntry.quarterHours = Math.ceil(newEntry.quarterHours);
+        // convert quarter hours to hours and assign to billingHours key
+        newEntry.billingHours = (newEntry.quarterHours)/4;
+        console.log(newEntry.billingHours);
         $http({
             method: 'POST',
             url: '/entry',
