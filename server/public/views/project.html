@@ -1,35 +1,32 @@
 <md-content layout-padding ng-cloak>
-    <Div>
-        <h2>Add Project</h2>
-        <input ng-model="vm.new.name" placeholder="New project name">
-        <button ng-click="vm.newProject(vm.new)">Submit</button>
+    <div md-whiteframe="1">
+        <h2 class="md-headline">Add Project</h2>
+        <div layout-gt-xs="row" layout-xs-max-width="100" layout-max-width="50">
+            <md-input-container class="md-block" flex-gt-xs>
+                <label>New project name</label>
+                <input ng-model="vm.new.name">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <md-button class="md-raised md-primary" ng-click="vm.newProject(vm.new)">Submit</md-button>
+            </md-input-container>
+        </div>
     </Div>
 
-    <Div>
-        <h2>Projects</h2>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Project</td>
-                        <td>Total Hours</td>
-                        <td>Actions</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="project in vm.projects.projectsArray">
-                        <td>
-                            <input ng-model="project.name">
-                        </td>
-                        <td>
-                            <input ng-model="project.total_hours">
-                        </td>
-                        <td>
-                            <button ng-click="vm.deleteProject(project)">Delete</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+    <div md-whiteframe="1">
+        <h2 class="md-headline">Projects</h2>
+        <div class="md-block" flex-gt-xs ng-repeat="project in vm.projects.projectsArray">
+            <md-input-container>
+                <label>Project</label>
+                <input ng-model="project.name">
+            </md-input-container>
+            <md-input-container>
+                <label>Hours</label>
+                <input ng-model="project.total_hours">
+            </md-input-container>
+            <md-input-container>
+                <md-button class="md-raised md-primary" ng-click="vm.deleteProject(project)">Delete</md-button>
+            </md-input-container>
         </div>
+    </div>
     </Div>
 </md-content>
