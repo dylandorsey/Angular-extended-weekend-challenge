@@ -61,26 +61,72 @@
             <tbody>
                 <tr ng-repeat="entry in vm.entries.entriesArray | filter:searchText">
                     <td>
-                        <input ng-model="entry.line_item">
+                        <input ng-model="vm.new.description" placeholder="What did you do?">
                     </td>
                     <td>
-                        <input ng-model="entry.description">
+                        <select ng-model="vm.new.project">
+                            <option value="" disabled>Select project</option>
+                            <option ng-repeat="project in vm.projects.projectsArray" ng-value="project.name">{{project.name}}</option>
+                        </select>
                     </td>
                     <td>
-                        <input ng-model="entry.project">
+                        <input ng-model="vm.new.date" type="date">
                     </td>
                     <td>
-                        <!-- <input ng-model="entry.date | date:'fullDate'"> -->
                         {{entry.date | date: 'yyyy-MM-dd'}}
                     </td>
                     <td>
-                        <input ng-model="entry.hours">
+                        <input ng-model="vm.new.endTime" type="time">
                     </td>
                     <td>
-                        <button ng-click="vm.deleteEntry(entry)">Delete</button>
+                        <button ng-click="vm.newEntry(vm.new)">Submit</button>
                     </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</Div>
+                </tbody>
+            </table>
+        </div>
+    </Div>
+    
+    <Div>
+        <h2>History</h2>
+        <div>
+            mat-form
+           <label>Search: <input ng-model="searchText" placeholder="search here"></label>
+        </div>
+        <div>
+            <table
+                <thead>
+                    <tr>
+                        <td>Line Item</td>
+                        <td>Description</td>
+                        <td>Project</td>
+                        <td>Date</td>
+                        <td>Hours</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="entry in vm.entries.entriesArray | filter:searchText">
+                        <td>
+                            <input ng-model="entry.line_item">
+                        </td>
+                        <td>
+                            <input ng-model="entry.description">
+                        </td>
+                        <td>
+                            <input ng-model="entry.project">
+                        </td>
+                        <td>
+                            <!-- <input ng-model="entry.date | date:'fullDate'"> -->
+                            {{entry.date | date: 'yyyy-MM-dd'}}
+                        </td>
+                        <td>
+                            <input ng-model="entry.hours">
+                        </td>
+                        <td>
+                            <button ng-click="vm.deleteEntry(entry)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </Div>
