@@ -41,47 +41,52 @@
     <div md-whiteframe="1">
         <h2 class="md-headline">History</h2>
         <div ng-show="vm.entries.entriesArray.length > 1" class="md-block" flex-gt-xs>
-                <md-input-container>
-                    <label class="md-subhead">Search</label>
-                    <input ng-model="searchText">
-                </md-input-container>
-                <md-input-container class="md-block" flex-gt-xs>
-                        <h3 class="md-subtitle">Sort by:</h3>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('lineAsc')">Line Item, ascending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('lineDesc')">Line Item, descending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('projectAsc')">Project, ascending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('projectDesc')">Project, descending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('DateAsc')">Date, ascending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('DateDesc')">Date, descending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('hoursAsc')">Hours, ascending</md-button>
-                        <md-button class="md-raised md-primary" ng-click="vm.getEntries('hoursDesc')">Hours, descending</md-button>
-
-                    </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <label class="md-subhead">Search</label>
+                <input ng-model="searchText">
+            </md-input-container>
+            <md-input-container class="md-block" flex-gt-xs>
+                <h3 class="md-subtitle">Sort by:</h3>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('lineAsc')">Line Item, ascending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('lineDesc')">Line Item, descending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('projectAsc')">Project, ascending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('projectDesc')">Project, descending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('DateAsc')">Date, ascending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('DateDesc')">Date, descending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('hoursAsc')">Hours, ascending</md-button>
+                <md-button class="md-raised md-primary" ng-click="vm.getEntries('hoursDesc')">Hours, descending</md-button>
+            </md-input-container>
         </div>
         <div class="md-block" flex-gt-xs ng-repeat="entry in vm.entries.entriesArray | filter:searchText">
             <md-divider>
                 <md-input-container>
-                        <label>Line Item</label>
+                    <label>Line Item</label>
                     <input ng-model="entry.line_item">
                 </md-input-container>
                 <md-input-container>
-                        <label>Description</label>
+                    <label>Description</label>
                     <input ng-model="entry.description">
                 </md-input-container>
                 <md-input-container>
-                        <label>Project</label>
-                    <input ng-model="entry.project">
+                    <label>Project</label>
+                    <md-select required md-no-asterisk ng-model="entry.project">
+                        <md-option value="" disabled>Select project</md-option>
+                        <md-option ng-repeat="project in vm.projects.projectsArray" ng-value="project.name">{{project.name}}</md-option>
+                    </md-select>
                 </md-input-container>
                 <md-input-container>
-                        <label>Date</label>
+                    <label>Date</label>
                     <input ng-model="entry.date">
                 </md-input-container>
                 <md-input-container>
-                        <label>Duration</label>
+                    <label>Duration</label>
                     <input ng-model="entry.hours">
                 </md-input-container>
                 <md-input-container>
                     <md-button class="md-raised md-warn" ng-click="vm.deleteEntry(entry)">Delete</md-button>
+                </md-input-container>
+                <md-input-container>
+                    <md-button class="md-raised" ng-click="vm.updateEntry(entry)">Update</md-button>
                 </md-input-container>
                 <md-divider>
         </div>
