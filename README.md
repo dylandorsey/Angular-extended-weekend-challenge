@@ -6,13 +6,13 @@ CREATE TABLE "entry" (
 "description" VARCHAR (200) NOT NULL,
 "project" VARCHAR (100) NOT NULL,
 "date" DATE NOT NULL,
-"hours" INTEGER
+"hours" DECIMAL(4,2)
 );
 
 CREATE TABLE "project" (
 "id" SERIAL PRIMARY KEY,
 "name" VARCHAR (100) NOT NULL,
-"total_hours"  INT
+"total_hours" DECIMAL(2,2)  
 );
 ```
 
@@ -46,8 +46,8 @@ Start with two tables **projects** & **entries**. When base features are complet
 
 ## Stretch Goals
 
-- Ability to edit entries or projects
-- Angular Material for design
+[x] - Ability to edit entries or projects
+[x] - Angular Material for design
 - Display a chart showing the total number of hours worked for each project
 - Ability to select start and end dates to influence what appears on the chart
 - Feel free to deviate from this list and add features of your own
