@@ -9,6 +9,7 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
     self.newProject = ProjectService.newProject;
     self.deleteProject = ProjectService.deleteProject;
     self.getProjects = ProjectService.getProjects;
+    self.updateProject = ProjectService.updateProject;
 
     // run methods on page load
     self.getProjects();

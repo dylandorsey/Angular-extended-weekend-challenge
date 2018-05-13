@@ -7,6 +7,22 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
         projectsArray: []
     };
 
+    // DELETE project
+    self.deleteProject = function (project) {
+        console.log('init deleteProject function');
+        $http({
+            method: 'DELETE',
+            url: `/project/${project.id}`
+        })
+            .then(function (response) {
+                console.log(response);
+                self.getProjects();
+            })
+            .catch(function (error) {
+                console.log('error on /project DELETE', error);
+            })
+    }// end DELETE project
+
     // GET projects
     self.getProjects = function () {
         console.log('init getProjects function')
@@ -28,7 +44,7 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
         console.log(newProject);
         $http({
             method: 'POST',
-            url: '/Project',
+            url: '/project',
             data: newProject
         })
             .then(function (response) {
@@ -42,23 +58,28 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
             });
     }// end POST project
 
-    // DELETE project
-    self.deleteProject = function (project) {
-        console.log('init deleteProject function');
+    // PUT project
+    self.updateProject = function (project) {
+        console.log('init updateProject function', project);
         $http({
-            method: 'DELETE',
-            url: `/project/${project.id}`
+            method: 'PUT',
+            url: '/project',
+            data: project
         })
-        .then (function (response) {
-            console.log(response);
-            self.getProjects();
-        })
-        .catch (function (error) {
-            console.log('error on /project DELETE', error);
-        })
-    }// end DELETE project
+            .then(function (response) {
+                console.log(response);
+                //update the DOM
+                self.getProjects();
+                //end update the DOM
+            })
+            .catch(function (error) {
+                console.log('error on /project PUT', error);
+            });
+    }
+    // end PUT project
 
-    // display projects on page load
+
+    // display projects on page load     
     self.getProjects();
 
 }]);
