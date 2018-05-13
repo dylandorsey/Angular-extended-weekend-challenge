@@ -3,8 +3,8 @@ TimeTrackerApp.controller('EntryController', ['EntryService', 'ProjectService', 
     const self = this;
     
     // objects
-    self.message = ProjectService.message;
     self.entries = EntryService.entries;
+    self.new = EntryService.new
 
     // methods
     self.deleteEntry = EntryService.deleteEntry;

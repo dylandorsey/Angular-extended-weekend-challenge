@@ -7,6 +7,10 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
         projectsArray: []
     };
 
+    self.new = {
+        name: ''
+    }
+
     // DELETE project
     self.deleteProject = function (project) {
         console.log('init deleteProject function');
@@ -50,6 +54,7 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
             .then(function (response) {
                 console.log(response);
                 //update the DOM
+                self.clearInputs();
                 self.getProjects();
                 //end update the DOM
             })
@@ -78,6 +83,10 @@ TimeTrackerApp.service('ProjectService', ['$http', function ($http) {
     }
     // end PUT project
 
+    // clear new project input field
+    self.clearInputs = function () {
+        self.new.name = '';
+    }
 
     // display projects on page load     
     self.getProjects();

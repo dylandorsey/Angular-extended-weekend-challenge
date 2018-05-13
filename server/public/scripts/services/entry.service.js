@@ -6,6 +6,10 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
         entriesArray: [],
     };
 
+    self.new = {
+
+    };
+
     // DELETE entry
     self.deleteEntry = function (entry) {
         console.log('init deleteEntry function');
@@ -60,6 +64,7 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
             .then(function (response) {
                 console.log(response);
                 //update the DOM
+                self.clearInputs();
                 self.getEntries('');
                 //end update the DOM
             })
@@ -89,8 +94,13 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     // end PUT entry
 
 
-
-
+    // clear select new entry input field
+    self.clearInputs = function () {
+        self.new.lineItem = '',
+        self.new.description = '',
+        self.new.startTime = '',
+        self.new.endTime = ''
+    }
 
     // display entries on page load
     self.getEntries('');

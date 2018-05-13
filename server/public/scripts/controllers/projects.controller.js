@@ -4,6 +4,7 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
 
     // objects
     self.projects = ProjectService.projects;
+    self.new = ProjectService.new;
 
     // methods
     self.newProject = ProjectService.newProject;
@@ -13,4 +14,5 @@ TimeTrackerApp.controller('ProjectController', ['ProjectService', function (Proj
 
     // run methods on page load
     self.getProjects();
+
 }]);
