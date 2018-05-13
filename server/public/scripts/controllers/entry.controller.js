@@ -7,5 +7,5 @@ TimeTrackerApp.controller('EntryController', ['EntryService', 'ProjectService', 
     self.deleteEntry = EntryService.deleteEntry;
     self.projects = ProjectService.projects;
     self.getEntries = EntryService.getEntries;
-    self.getEntries();
+    self.getEntries('');
 }]);

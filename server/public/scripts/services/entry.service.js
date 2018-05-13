@@ -3,7 +3,7 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     var self = this;
 
     self.entries = {
-        entriesArray: []
+        entriesArray: [],
     };
 
     // POST new entry
@@ -26,7 +26,7 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
             .then(function (response) {
                 console.log(response);
                 //update the DOM
-                self.getEntries();
+                self.getEntries('');
                 //end update the DOM
             })
             .catch(function (error) {
@@ -35,11 +35,12 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     }// end POST new entry
 
     // GET entries
-    self.getEntries = function () {
+    self.getEntries = function (sort) {
         console.log('init getEntries function')
+        console.log(sort);
         $http ({
             method: 'GET',
-            url: '/entry'
+            url: `/entry/${sort}`
         })
         .then(function (response) {
             self.entries.entriesArray = response.data;
@@ -59,7 +60,7 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
         })
         .then (function (response) {
             console.log(response);
-            self.getEntries();
+            self.getEntries('');
         })
         .catch (function (error) {
             console.log('error on /entry DELETE', error);
@@ -68,6 +69,6 @@ TimeTrackerApp.service('EntryService', ['$http', function ($http) {
     // end DELETE entry
 
     // display entries on page load
-    self.getEntries();
+    self.getEntries('');
 
 }]);
