@@ -16,8 +16,6 @@ CREATE TABLE "project" (
 );
 ```
 
-
-
 # Time Tracker Project
 
 > NOTE: Do not fork this repository. Instead, create your own repository from scratch.
@@ -25,7 +23,7 @@ CREATE TABLE "project" (
 Trello Board: [https://trello.com/b/WUa7rOxR/time-tracker-sample](https://trello.com/b/WUa7rOxR/time-tracker-sample)
 
 ## Features
-
+[x] - View navigation
 [x] - Add projects by name
 [x] - Track time to projects (task name, date, start time and end time)
 [x] - Display a history of all time entries
